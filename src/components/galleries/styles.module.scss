@@ -1,0 +1,190 @@
+.galleries {
+    margin-top: 119.59px;
+    width: 100%;
+    height: 710.27px;
+    max-width: 100vw;
+    background-color: #9C69E2;
+    border-radius: 50px;
+    padding: 109.19px 93.17px 0 93.17px;
+    position: relative;
+
+    h4 {
+        font-family: var(--font-title);
+        font-weight: 700;
+        font-size: 40px;
+        background: none;
+        color: #FFFFFF;
+    }
+
+    ul.galleries__slick {
+        background: none;
+
+        li {
+            position: absolute;
+            background: none;
+            cursor: pointer;
+
+            img {
+                background: none;
+            }
+        }
+
+        li:first-child {
+            left: 27px;
+            top: 50%;
+        }
+
+        li:nth-child(2) {
+            right: 27px;
+            top: 50%;
+        }
+    }
+
+    .dots {
+        width: 80px;
+        display: flex;
+        justify-content: space-between;
+        background: none;
+        position: absolute;
+        bottom: 50px;
+        left: calc(50% - 10px);
+
+        div {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            cursor: pointer;
+            content: " ";
+        }
+    }
+
+    #slider {
+        position: relative;
+        max-width: 100%;
+        width: 931.66px;
+        height: 325.59px;
+        border: 1px solid #FFFFFF;
+        border-radius: 20px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 20px rgba(102, 51, 204, 0.5);
+        margin: 88.17px auto;
+
+        button::before {
+            display: none;
+        }
+
+        ul {
+            position: absolute;
+            bottom: -80px;
+
+            li {
+                position: relative !important;
+
+                button::before {
+                    display: flex !important;
+                    font-size: 15px;
+                    color: white !important;
+                    opacity: 0.8 !important;
+                }
+            }
+        }
+    }
+
+    &__item {
+        max-width: 100%;
+        width: 931.66px;
+        height: 325.59px;
+        padding: 60.1px 100.11px 50px 100.11px;
+        overflow: hidden;
+        border-radius: 20px;
+        display: flex !important;
+    }
+
+    &__img {
+        width: 130px;
+        height: 90.16px;
+        background-color: rgba(240, 99, 184, 0.1);
+        clip-path: ellipse(49% 45% at 50% 50%);
+        margin-right: 43.33px;
+
+        img {
+            width: 130px;
+            height: 90.16px;
+        }
+    }
+
+    &__info {
+        margin-top: 20px;
+        max-width: 100%;
+
+        h5 {
+            font-weight: 600;
+            font-size: 18px;
+            font-family: var(--font-title);
+            letter-spacing: 0.5%;
+            color: var(--color-title);
+        }
+
+        a {
+            font-size: 14px;
+            font-weight: 500;
+            color: #9C69E2;
+        }
+
+        p {
+            width: 375.11px;
+            height: 130.23px;
+            overflow: hidden;
+            margin-top: 19.03px;
+            color: #4B5D68;
+            font-size: 18px;
+            line-height: 32.4px;
+            max-width: 90% !important;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .galleries {
+        padding: 50px;
+        height: 600.27px;
+        h4 {
+            text-align: center;
+        }
+        #slider {
+            margin: 45px auto;
+        }
+        ul.galleries__slick {
+            li {
+                img {
+                    width: 25px;
+                }
+            }
+
+            li:first-child {
+                left: 17px;
+                top: 50%;
+            }
+
+            li:nth-child(2) {
+                right: 17px;
+                top: 50%;
+            }
+        }
+
+        &__item {
+            padding: 30px;
+            flex-direction: column;
+        }
+        &__info {
+            width: 100%;
+            p {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+}
