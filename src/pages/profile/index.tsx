@@ -129,7 +129,7 @@ const Profile = () => {
                     <th scope="row">{index + 1}</th>
                     <td>{item.title}</td>
                     <td>{item.description}</td>
-                    <td>{item.tags}</td>
+                    <td>{item.tags.map(item => item += ' ')}</td>
                     <td>
                       <img
                         onClick={() => handleEditPost(item)}

@@ -4,17 +4,18 @@ import styles from './styles.module.scss'
 import axios from "axios";
 
 const CreatePost = ({setIsCreatePost} : {setIsCreatePost: React.Dispatch<React.SetStateAction<boolean>>}) => {
-    const [ tags, setTags ] = useState<[string | number] | string>([''])
+    const [ tags, setTags ] = useState<string>(' ')
     const [ newInfo, setNewInfo ] = useState({
         title: '',
         description: '',
     })
-    const handleCreate = async(e: any) =>{
+    let arrTag = tags.split(',')
+    const handleCreate = async(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault()
         await axios.post(`https://api-test-web.agiletech.vn/posts`, {
             id: uuidv4(),
             title: newInfo.title,
-            tags,
+            tags: arrTag,
             description: newInfo.description
         })
         setIsCreatePost(false)
@@ -27,7 +28,7 @@ const CreatePost = ({setIsCreatePost} : {setIsCreatePost: React.Dispatch<React.S
         <label htmlFor="description">Description</label><br/>
         <input onChange={(e) => setNewInfo({...newInfo, description: e.target.value})} value={newInfo.description} id="description"/><br/>
         <label htmlFor="tags">Tags</label><br/>
-        <input onChange={(e) => setTags([e.target.value])} />
+        <input onChange={(e) => setTags(e.target.value)} />
         <button onClick={handleCreate}>Create</button>
         <button onClick={() => {setIsCreatePost(false)}}>Close</button>
     </form>

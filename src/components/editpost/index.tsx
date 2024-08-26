@@ -14,18 +14,19 @@ type Post = {
     value?: string
   }
 const EditPost = ({edit, setEdit}: {edit: Post | any, setEdit: React.Dispatch<React.SetStateAction<Post | undefined | boolean>>}) => {
-    const [ tags , setTags ] = useState< [string | Number] | String | number | any>(edit.tags)
+    const [ tags , setTags ] = useState<string>(edit.tags.toString())
     const [ newInfo, setNewInfo ] = useState({
         title: edit.title,
         description: edit.description,
         tags: edit.tags
     })
-    const handleSave = async(e: any) =>{
+    let arrTag = tags.split(',')
+    const handleSave = async(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
         e.preventDefault()
         await axios.patch(`https://api-test-web.agiletech.vn/posts/${edit.id}`, {
-            title: newInfo.title,
-            tags,
-            description: newInfo.description
+          title: newInfo.title,
+          tags: arrTag,
+          description: newInfo.description
         })
         setEdit(false)
     }
@@ -37,7 +38,7 @@ const EditPost = ({edit, setEdit}: {edit: Post | any, setEdit: React.Dispatch<Re
         <label htmlFor="description">Description</label><br/>
         <input onChange={(e) => setNewInfo({...newInfo, description: e.target.value})} value={newInfo.description} id="description"/><br/>
         <label htmlFor="tags">Tags</label><br/>
-        <input onChange={(e) => setTags([e.target.value])} value={tags} />
+        <input onChange={(e) => setTags(e.target.value)} value={tags} />
         <button onClick={handleSave}>Save</button>
         <button onClick={() => {setEdit(false)}}>Close</button>
     </form>
